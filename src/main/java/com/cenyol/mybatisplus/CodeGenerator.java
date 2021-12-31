@@ -38,6 +38,8 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor(AUTHOR);
         gc.setOpen(false);
+        gc.setBaseResultMap(true);
+        gc.setBaseColumnList(true);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
