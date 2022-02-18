@@ -115,7 +115,7 @@
         SELECT
             <include refid="Base_Column_List"/>
         FROM ${table.name}
-        WHERE ${"#"}{id}
+        WHERE id = ${"#"}{id}
         AND status = 0
     </select>
 
