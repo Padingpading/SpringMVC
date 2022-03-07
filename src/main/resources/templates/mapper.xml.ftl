@@ -103,7 +103,7 @@
         SET
         <#list table.fields as field>
            <#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" >
-       ${"<if test=\""}${field.propertyName}${"!= null\" >"}
+       ${"<if test=\""}${field.propertyName}${" != null\" >"}
             <#if field_index != 1>,</#if>${field.name} = ${"#"}{${field.propertyName}}
        ${"</if>"}
            </#if>
