@@ -57,7 +57,7 @@
     </insert>
 
     <!--批量插入-->
-    <insert id="insertBatch" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    <insert id="createBatch" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO ${table.name}(
             <#list table.fields as field><#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" ><#if field_index != 1>,</#if>${field.name}</#if></#list>
         ) VALUES
@@ -66,7 +66,7 @@
         </foreach>
      </insert>
 
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    <insert id="createSelective" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO ${table.name}(
         <#list table.fields as field>
         <#if !field.keyFlag && field.name != "status" && field.name != "create_time" && field.name != "update_time" >
