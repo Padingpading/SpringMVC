@@ -66,24 +66,27 @@
         </foreach>
      </insert>
 
+
     <insert id="createSelective" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO ${table.name}(
-        <#list table.fields as field>
-        <#if !field.keyFlag && field.name != "status" && field.name != "create_time" && field.name != "update_time" >
-        ${"<if test=\""}${field.propertyName}${"!= null\" >"}
-            <#if field_index != 1>, </#if>${field.name}
-         ${"</if>"}
-        </#if>
-        </#list>
-        )VALUES(
-        <#list table.fields as field>
-        <#if !field.keyFlag && field.name != "status" && field.name != "create_time" && field.name != "update_time" >
-        ${"<if test=\""}${field.propertyName}${"!= null\" >"}
-            <#if field_index != 1>,</#if>${"#"}{${field.propertyName}}
-        ${"</if>"}
-        </#if>
-        </#list>
-        )
+        INSERT INTO ${table.name}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <#list table.fields as field>
+                <#if !field.keyFlag && field.name != "status" && field.name != "create_time" && field.name != "update_time" >
+                    ${"<if test=\""}${field.propertyName}${"!= null\" >"}
+                    ${field.name}<#if field_index != 1>, </#if>
+                    ${"</if>"}
+                </#if>
+            </#list>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <#list table.fields as field>
+                <#if !field.keyFlag && field.name != "status" && field.name != "create_time" && field.name != "update_time" >
+                    ${"<if test=\""}${field.propertyName}${"!= null\" >"}
+                    {"#"}{${field.propertyName}}<#if field_index != 1>,</#if>$
+                    ${"</if>"}
+                </#if>
+            </#list>
+        </trim>
     </insert>
 
 
