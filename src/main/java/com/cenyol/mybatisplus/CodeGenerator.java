@@ -26,12 +26,12 @@ public class CodeGenerator {
 
     private final static String APP_PROPERTY = "application.properties";
     private final static String AUTHOR = "Cenyol";
-    private final static String BASE_PACKAGE = "com.cenyol.mybatisplus";
+    private final static String BASE_PACKAGE = "com.padingpading.sirius";
 
     public static void main(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
-
+        
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
@@ -48,8 +48,10 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("模块名"));
-        pc.setParent(BASE_PACKAGE);
+        String moudule = scanner("模块名");
+        
+       // pc.setModuleName(scanner("模块名"));
+        pc.setParent(moudule);
         mpg.setPackageInfo(pc);
 
         // 自定义配置
