@@ -61,8 +61,8 @@
         INSERT INTO ${table.name}(
             <#list table.fields as field><#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" ><#if field_index != 1>,</#if>${field.name}</#if></#list>
         ) VALUES
-        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-            <#list table.fields as field><#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" ><#if field_index != 1>,</#if>${"#"}{item.${field.propertyName}}</#if></#list>
+        <foreach collection="list" index="index" item="item" separator=",">
+            (<#list table.fields as field><#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" ><#if field_index != 1>,</#if>${"#"}{item.${field.propertyName}}</#if></#list>)
         </foreach>
      </insert>
 
