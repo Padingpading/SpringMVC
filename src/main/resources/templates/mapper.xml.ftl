@@ -104,7 +104,7 @@
 
     <update id="updateSelective">
         UPDATE ${table.name}
-        SET
+        <set>
         <#list table.fields as field>
            <#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" >
        ${"<if test=\""}${field.propertyName}${" != null\" >"}
@@ -112,6 +112,7 @@
        ${"</if>"}
            </#if>
         </#list>
+        </set>
         WHERE id = ${"#"}{id}
     </update>
 
