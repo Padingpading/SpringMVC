@@ -92,12 +92,13 @@
 
     <update id="update">
         UPDATE ${table.name}
-        SET
+        <set>
         <#list table.fields as field>
         <#if !field.keyFlag && field.name != "status" && field.name != "create_by" && field.name != "create_time" && field.name != "update_time" >
             <#if field_index != 1>,</#if>${field.name} = ${"#"}{${field.propertyName}}
         </#if>
         </#list>
+        </set>
         WHERE id = ${"#"}{id}
     </update>
 
