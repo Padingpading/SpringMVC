@@ -40,7 +40,7 @@
 
     <sql id="Search_Info">
     <#list table.fields as field>
-        ${"<if test=\""}${field.propertyName}${"!= `null\" >"}
+        ${"<if test=\""}${field.propertyName}${"!= null\" >"}
             AND ${field.name} = ${"#"}{${field.propertyName}}
         ${"</if>"}
     </#list>
