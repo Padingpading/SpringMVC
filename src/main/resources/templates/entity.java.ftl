@@ -52,7 +52,6 @@ public class ${entity} implements Serializable {
     <#-- 逻辑删除注解 -->
     <#if (logicDeleteFieldName!"") == field.name>
     </#if>
-
     <#if  "LocalDateTime" == field.propertyType>
     private Date ${field.propertyName};
     <#else>
